@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontuação do Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f9e7;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pontuação do Time</h1>
+        <p id="resultado"></p>
+        <div class="result" id="mensagem"></div>
+        <button onclick="calcularPontos()">Calcular Pontos</button>
+    </div>
+
+    <script>
+        function calcularPontos() {
+            var vitorias = parseInt(prompt("Qual o número de vitórias do seu time?"));
+            var empates = parseInt(prompt("Qual o número de empates do seu time?"));
+            var pontosAnoPassado = parseInt(prompt("Quantos pontos seu time fez no ano passado?"));
+
+            var pontos = (vitorias * 3) + empates;
+
+            var resultado = document.getElementById("resultado");
+            var mensagem = document.getElementById("mensagem");
+
+            resultado.innerHTML = "O total de pontos do seu time este ano é: " + pontos;
+
+            if (pontos > pontosAnoPassado) {
+                mensagem.innerHTML = "Seu time está melhor que no ano passado!";
+                mensagem.style.backgroundColor = "#e7f9e7";
+                mensagem.style.border = "1px solid #4CAF50";
+            } else if (pontos < pontosAnoPassado) {
+                mensagem.innerHTML = "Seu time está pior que no ano passado!";
+                mensagem.style.backgroundColor = "#f9e7e7";
+                mensagem.style.border = "1px solid #f44336";
+            } else {
+                mensagem.innerHTML = "Seu time está igual ao ano passado!";
+                mensagem.style.backgroundColor = "#f9f9e7";
+                mensagem.style.border = "1px solid #ffeb3b";
+            }
+        }
+    </script>
+
+</body>
+</html>
